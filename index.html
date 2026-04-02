@@ -1,0 +1,447 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alice Tsai — Product Leader</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#FAFAF7;--ink:#1A1A18;--ink2:#4A4A46;--ink3:#8A8A84;
+  --accent:#1D9E75;--accent2:#0F6E56;--accent-light:#E1F5EE;
+  --border:#E8E8E2;--card:#FFFFFF;
+  --tag-bg:#F0F0EA;--tag-text:#4A4A46;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px clamp(20px,4vw,64px);display:flex;justify-content:space-between;align-items:center;background:rgba(250,250,247,0.92);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
+nav.scrolled{border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Inter',sans-serif;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-size:12px;color:var(--ink3);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.hero{display:grid;grid-template-columns:380px 1fr;align-items:center;gap:clamp(32px,5vw,64px);padding:clamp(100px,12vw,120px) clamp(20px,4vw,64px) clamp(48px,6vw,64px);max-width:1400px;margin:0 auto}
+.hero-photo-col{position:relative;height:clamp(340px,46vh,520px)}
+.hero-photo{width:100%;height:100%;object-fit:cover;object-position:center 10%;border-radius:12px;display:block}
+.hero-photo-placeholder{width:100%;height:100%;border-radius:12px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;font-size:64px;font-weight:700;color:var(--accent)}
+.hero-eyebrow{font-family:'Inter',sans-serif;font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px}
+.hero-name{font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(60px,7.5vw,108px);font-weight:400;line-height:.86;letter-spacing:.02em;color:var(--ink);text-transform:uppercase;margin-bottom:0}
+.hero-name span{color:var(--accent)}
+.hero-divider{width:44px;height:3px;background:var(--accent);margin:14px 0}
+.hero-headline{font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(26px,3.2vw,46px);font-weight:400;line-height:.95;letter-spacing:.03em;color:var(--ink);text-transform:uppercase;margin-bottom:14px}
+.hero-headline span{color:var(--accent)}
+.hero-sub{font-family:'Inter',sans-serif;font-size:clamp(14px,2vw,16px);color:var(--ink3);line-height:1.65;margin-bottom:20px;font-weight:400;max-width:480px}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:0}
+.btn-primary{padding:11px 24px;background:var(--ink);color:#fff;border-radius:3px;text-decoration:none;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:background .2s}
+.btn-primary:hover{background:var(--accent)}
+.btn-secondary{padding:11px 24px;border:1.5px solid var(--ink);color:var(--ink);border-radius:3px;text-decoration:none;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:all .2s}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+.pillars{padding:20px clamp(20px,4vw,64px);border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:#fff}
+.pillars-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
+.pillar{padding:18px 28px;position:relative}
+.pillar:not(:last-child)::after{content:'';position:absolute;right:0;top:20%;height:60%;width:1px;background:var(--border)}
+.pillar-num{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.14em;color:var(--accent);font-weight:600;margin-bottom:6px;text-transform:uppercase}
+.pillar-title{font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px;line-height:1.2}
+.pillar-desc{font-family:'Inter',sans-serif;font-size:13px;color:var(--ink3);line-height:1.55}
+section{padding:80px clamp(20px,4vw,64px);max-width:1400px;margin:0 auto}
+.section-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.section-label::before{content:'';display:inline-block;width:20px;height:2px;background:var(--accent)}
+.section-title{font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(40px,5vw,64px);font-weight:400;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);margin-bottom:10px;line-height:.95}
+.section-sub{font-family:'Inter',sans-serif;font-size:14px;color:var(--ink3);max-width:520px;margin-bottom:52px;line-height:1.65}
+.portfolio-primary{display:flex;flex-direction:column;gap:2px;margin-bottom:48px}
+.port-card{background:var(--card);border:1px solid var(--border);padding:36px 44px;cursor:default;transition:border-color .25s,box-shadow .25s;position:relative;overflow:hidden}
+.port-card:first-child{border-radius:16px 16px 0 0}
+.port-card.primary-last{border-radius:0 0 16px 16px}
+.port-card.primary{display:grid;grid-template-columns:1fr clamp(200px,28%,380px);gap:44px;align-items:start}
+.port-card:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(29,158,117,.08)}
+.port-card-accent{position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent);opacity:0;transition:opacity .25s}
+.port-card:hover .port-card-accent{opacity:1}
+.port-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.tag{font-family:'Inter',sans-serif;font-size:10px;padding:3px 10px;background:var(--tag-bg);color:var(--tag-text);border-radius:100px;letter-spacing:.05em;font-weight:600;text-transform:uppercase}
+.tag.ai{background:#E1F5EE;color:#0F6E56}
+.tag.ml{background:#EEE8FD;color:#533AB7}
+.tag.platform{background:#FFF0E6;color:#8A3D00}
+.port-problem{font-family:'Inter',sans-serif;font-size:13px;color:var(--ink3);margin-bottom:12px;font-style:italic;line-height:1.55;padding-left:12px;border-left:2px solid var(--accent-light)}
+.port-title{font-family:'Inter',sans-serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:10px;letter-spacing:-.02em;line-height:1.2}
+.port-desc{font-family:'Inter',sans-serif;font-size:14px;color:var(--ink2);line-height:1.7;margin-bottom:20px}
+.port-metrics{display:flex;gap:24px;flex-wrap:wrap}
+.metric{border-top:1px solid var(--border);padding-top:10px;min-width:80px}
+.metric-val{font-family:'Inter',sans-serif;font-size:22px;font-weight:700;color:var(--accent);letter-spacing:-.02em}
+.metric-label{font-family:'Inter',sans-serif;font-size:10px;color:var(--ink3);letter-spacing:.05em;text-transform:uppercase;margin-top:3px}
+.port-screens{display:flex;flex-direction:column;gap:8px}
+.screen-wrap{border-radius:10px;overflow:hidden;border:1px solid var(--border);background:#F5F5F0;position:relative}
+.screen-wrap.landscape{aspect-ratio:16/9;height:auto}
+.screen-wrap img{width:100%;height:100%;object-fit:cover;object-position:top left;display:block;transition:transform .4s}
+.port-card:hover .screen-wrap img{transform:scale(1.03)}
+.screen-wrap.protected{pointer-events:auto;user-select:none;cursor:zoom-in}
+.screen-wrap.protected::after{content:'';position:absolute;inset:0;z-index:2;cursor:zoom-in}
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.85);align-items:center;justify-content:center;padding:24px}
+.lightbox.active{display:flex}
+.lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:8px;box-shadow:0 24px 64px rgba(0,0,0,.5)}
+.lightbox-close{position:absolute;top:20px;right:28px;font-size:32px;color:#fff;cursor:pointer;line-height:1;opacity:.7;transition:opacity .2s}
+.lightbox-close:hover{opacity:1}
+.screen-label{position:absolute;bottom:8px;left:8px;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.9);color:var(--ink2);padding:3px 8px;border-radius:4px}
+.older-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.older-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.portfolio-secondary{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.port-card.secondary{border-radius:12px;padding:28px 32px;background:var(--cream);border:1px solid var(--border)}
+.port-card.secondary:hover{border-color:var(--ink3)}
+.port-card.secondary .port-title{font-size:16px;color:var(--ink2)}
+.port-card.secondary .port-desc{font-size:13px;color:var(--ink3);margin-bottom:16px}
+.port-card.secondary .metric-val{font-size:18px;color:var(--ink3)}
+.philosophy-outer{width:100%;padding:0 clamp(20px,4vw,64px);margin-bottom:80px;display:flex;justify-content:center}
+.philosophy{background:var(--ink);border-radius:20px;padding:clamp(48px,6vw,80px) clamp(48px,7vw,100px);width:100%;max-width:1400px;position:relative;overflow:hidden;text-align:center;display:flex;flex-direction:column;align-items:center}
+.philosophy::before{content:'';position:absolute;top:-80px;right:-80px;width:360px;height:360px;background:var(--accent);opacity:.07;border-radius:50%;pointer-events:none}
+.phil-label{font-family:'Inter',sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:24px;display:flex;align-items:center;gap:8px}
+.phil-label::before{content:'';display:inline-block;width:16px;height:2px;background:var(--accent)}
+.phil-quote{font-family:'Inter',sans-serif;font-size:clamp(18px,2.4vw,28px);font-weight:700;color:#fff;line-height:1.35;letter-spacing:-.02em;max-width:720px;margin-bottom:24px;position:relative;padding-left:0}
+.phil-quote::before{content:'\201C';font-size:60px;color:var(--accent);opacity:.45;position:absolute;top:-8px;left:-36px;line-height:1;font-family:Georgia,serif}
+.phil-introducing{font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(22px,2.6vw,34px);font-weight:400;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;line-height:1}
+.phil-sub{font-family:'Inter',sans-serif;font-size:14px;color:rgba(255,255,255,.5);max-width:580px;line-height:1.75;margin-bottom:32px}
+.phil-bridge{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:20px}
+.phil-stages{display:flex;align-items:center;gap:6px;margin-bottom:36px;flex-wrap:wrap}
+.phil-stage-pill{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;padding:10px 22px;border-radius:100px;text-transform:uppercase;line-height:1}
+.phil-stage-pill.s1{background:rgba(29,158,117,.22);color:#4DCEAA;border:1.5px solid rgba(29,158,117,.3)}
+.phil-stage-pill.s2{background:rgba(127,119,221,.22);color:#B0ABEE;border:1.5px solid rgba(127,119,221,.3)}
+.phil-stage-pill.s3{background:rgba(239,159,39,.22);color:#F0A82E;border:1.5px solid rgba(239,159,39,.3)}
+.phil-stage-pill.s4{background:rgba(216,90,48,.22);color:#EE8A65;border:1.5px solid rgba(216,90,48,.3)}
+.phil-arrow{font-size:18px;font-weight:300;color:rgba(255,255,255,.25);margin:0 2px;line-height:1}
+.phil-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;border:1.5px solid rgba(255,255,255,.22);padding:12px 22px;border-radius:4px;text-decoration:none;transition:border-color .2s,color .2s}
+.phil-cta:hover{border-color:var(--accent);color:var(--accent)}
+.phil-cta-arrow{font-size:14px;transition:transform .2s}
+.phil-cta:hover .phil-cta-arrow{transform:translateX(4px)}
+.career-timeline{display:grid;gap:0}
+.career-item{display:grid;grid-template-columns:clamp(80px,12vw,160px) 1px 1fr;gap:0 32px;padding-bottom:36px}
+.career-item:last-child{padding-bottom:0}
+.career-year{font-family:'Inter',sans-serif;font-size:12px;color:var(--ink3);padding-top:4px;text-align:right;font-weight:400}
+.career-line{background:var(--border);position:relative}
+.career-dot{position:absolute;top:6px;left:-5px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--cream)}
+.career-company{font-family:'Inter',sans-serif;font-size:16px;font-weight:700;color:var(--ink)}
+.career-role{font-family:'Inter',sans-serif;font-size:11px;color:var(--accent);font-weight:600;margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase}
+.career-desc{font-family:'Inter',sans-serif;font-size:13px;color:var(--ink3);line-height:1.6}
+.contact-band{background:var(--accent-light);border-top:1px solid #C5EDDE;padding:72px clamp(20px,4vw,64px);text-align:center}
+.contact-band h2{font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(32px,5vw,64px);font-weight:400;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);margin-bottom:12px}
+.contact-band p{font-family:'Inter',sans-serif;font-size:14px;color:var(--ink2);margin-bottom:28px}
+.contact-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.contact-link{padding:12px 24px;background:#fff;border:1px solid var(--border);border-radius:4px;text-decoration:none;color:var(--ink);font-family:'Inter',sans-serif;font-size:13px;font-weight:600;transition:all .2s}
+.contact-link:hover{border-color:var(--accent);color:var(--accent)}
+footer{padding:24px clamp(20px,4vw,64px);border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.footer-name{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;color:var(--ink);letter-spacing:.04em;text-transform:uppercase}
+.footer-copy{font-family:'Inter',sans-serif;font-size:12px;color:var(--ink3)}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:88px;gap:24px}
+  .hero-photo-col{height:clamp(260px,50vw,380px);max-width:360px;margin:0 auto;width:100%}
+  .hero-name{font-size:clamp(52px,14vw,80px)}
+  .hero-headline{font-size:clamp(22px,6vw,36px)}
+  .hero-sub{font-size:15px;max-width:100%}
+  .pillars-inner{grid-template-columns:1fr}
+  .pillar:not(:last-child)::after{display:none}
+  section{padding:56px clamp(20px,4vw,64px)}
+  .port-card.primary{grid-template-columns:1fr}
+  .portfolio-secondary{grid-template-columns:1fr}
+  .philosophy{margin:0 clamp(20px,4vw,64px) 56px}
+  .phil-quote::before{display:none}
+  .phil-stages{gap:6px}
+  footer{flex-direction:column;gap:8px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">Alice Tsai · Product Leader · AI & Platform Portfolio</div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#career">Career</a>
+    <a href="#philosophy">Philosophy</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-photo-col">
+    <img class="hero-photo" id="alicePhoto" alt="Alice Tsai" style="display:none"/>
+    <div class="hero-photo-placeholder" id="photoPlaceholder">AT</div>
+  </div>
+  <div class="hero-text">
+    <div class="hero-eyebrow">Product Leader &nbsp;·&nbsp; AI &amp; Platform &nbsp;·&nbsp; B2C &amp; B2B2C</div>
+    <div class="hero-name">Alice<br><span>Tsai.</span></div>
+    <div class="hero-divider"></div>
+    <div class="hero-headline">Building products<br>people live with<br><span>every day.</span></div>
+    <p class="hero-sub">From consumer platforms to AI-powered care delivery — turning complexity into scalable, intelligent systems.</p>
+    <div class="hero-cta">
+      <a href="#work" class="btn-primary">View Work</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+</div>
+
+<div class="pillars">
+  <div class="pillars-inner">
+    <div class="pillar">
+      <div class="pillar-num">01</div>
+      <div class="pillar-title">Platform at Scale</div>
+      <div class="pillar-desc">Building shared infrastructure that powers complex systems — from Yahoo's global publishing platform and Twitch's recommendation engine to iHealth's integrated care ecosystem across clinics, devices, and patient apps.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">02</div>
+      <div class="pillar-title">Workflow Intelligence</div>
+      <div class="pillar-desc">Transforming fragmented, manual operations into AI-powered workflows — driving efficiency, reducing cost, and enabling scale without linear headcount growth.</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">03</div>
+      <div class="pillar-title">Data-Driven Personalization</div>
+      <div class="pillar-desc">Layering user context, behavioral data, ML, and generative AI to power personalization at scale — from content recommendation to next-generation clinical workflows.</div>
+    </div>
+  </div>
+</div>
+
+<section id="work">
+  <div class="section-label">Featured Work</div>
+  <div class="section-title">Products Built.<br>Outcomes Delivered.</div>
+  <p class="section-sub">A selection of impactful systems — each one a bet on the right problem, the right architecture, and measurable change.</p>
+
+  <div class="portfolio-primary">
+    <div class="port-card primary">
+      <div class="port-card-accent"></div>
+      <div>
+        <div class="port-tags">
+          <span class="tag ai">Ambient AI</span><span class="tag ai">Patient Context</span><span class="tag ai">Real-time Transcription</span>
+          <span class="tag">Human-in-the-Loop</span><span class="tag">Evaluation & Quality</span>
+        </div>
+        <p class="port-problem">Care teams managing thousands of patient visits each month — burdened by manual prep, real-time documentation, and fragmented post-visit workflows across follow-up, coordination, and billing. Capacity was constrained by human throughput.</p>
+        <div class="port-title">End-to-End AI-Powered Virtual Care Workflow for Chronic Care Teams</div>
+        <p class="port-desc">Redesigned the end-to-end virtual care lifecycle into a connected AI system — spanning pre-visit context, real-time transcription, structured synthesis, and post-visit automation. Each stage compounds intelligence to improve efficiency, quality, and scale.</p>
+        <div class="port-metrics">
+          <div class="metric"><div class="metric-val">25–50%</div><div class="metric-label">Less doc time</div></div>
+          <div class="metric"><div class="metric-val">+8%</div><div class="metric-label">Same-day charts</div></div>
+          <div class="metric"><div class="metric-val">+33%</div><div class="metric-label">Care capacity</div></div>
+        </div>
+      </div>
+      <div class="port-screens">
+        <div class="screen-wrap landscape protected">
+          <img id="img-visit" alt="AI Visit Workflow UI"/>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="port-card primary">
+      <div class="port-card-accent"></div>
+      <div>
+        <div class="port-tags">
+          <span class="tag ai">Browser Agent</span>
+          <span class="tag ai">Intelligent Data Extraction</span><span class="tag platform">Multi-EHR Integration</span>
+          <span class="tag">Human-in-the-Loop</span><span class="tag">Workflow Automation</span>
+        </div>
+        <p class="port-problem">Eligibility screening across hundreds of clinics and dozens of EHR systems — fully manual with no scalable path to integration.</p>
+        <div class="port-title">Multi-EHR Intake &amp; Eligibility AI Automation Platform</div>
+        <p class="port-desc">Designed a browser-based automation layer that replicates care team workflows to extract and validate patient data across fragmented EHR systems — enabling scalable intake without reliance on direct integrations.</p>
+        <div class="port-metrics">
+          <div class="metric"><div class="metric-val">~50%</div><div class="metric-label">Less screening time</div></div>
+          <div class="metric"><div class="metric-val">20+</div><div class="metric-label">EHR systems unified</div></div>
+          <div class="metric"><div class="metric-val">100+</div><div class="metric-label">Clinics automated</div></div>
+        </div>
+      </div>
+      <div class="port-screens">
+        <div class="screen-wrap landscape protected">
+          <img id="img-screening" alt="AI Screening Hub UI"/>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="port-card primary primary-last">
+      <div class="port-card-accent"></div>
+      <div>
+        <div class="port-tags">
+          <span class="tag ai">Image Recognition</span><span class="tag ai">LLM Reasoning</span>
+          <span class="tag">CGM Signals</span><span class="tag">Behavior Design</span><span class="tag">AI Nutrition</span>
+        </div>
+        <p class="port-problem">Nearly half of dietitian feedback on food logs was minimal and arrived too late to influence patient behavior.</p>
+        <div class="port-title">Smart Food Logging with Real-Time AI Insights</div>
+        <p class="port-desc">Redesigned food logging into a real-time feedback loop — combining image understanding and generative AI to deliver personalized insights that support more balanced meal choices.</p>
+        <div class="port-metrics">
+          <div class="metric"><div class="metric-val">+30%</div><div class="metric-label">Logging adherence</div></div>
+          <div class="metric"><div class="metric-val">95%</div><div class="metric-label">AI insight coverage</div></div>
+          <div class="metric"><div class="metric-val">Real-Time</div><div class="metric-label">Feedback from delayed review</div></div>
+        </div>
+      </div>
+      <div class="port-screens">
+        <div class="screen-wrap protected" style="aspect-ratio:16/9;height:auto;width:100%">
+          <img id="img-food" alt="Food logging mobile UI" style="object-position:center center"/>
+          <span class="screen-label">Smart Food Logging</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="older-label">Earlier Career</div>
+  <div class="portfolio-secondary">
+    <div class="port-card secondary">
+      <div class="port-card-accent"></div>
+      <div class="port-tags">
+        <span class="tag ml">ML Recommendations</span><span class="tag ml">Cold-Start Design</span>
+        <span class="tag">A/B Testing</span><span class="tag">Rec Fairness</span>
+      </div>
+      <p class="port-problem">Millions of live streams, but little to no discoverability. New viewers had no preference signals, leaving smaller streamers largely unseen.</p>
+      <div class="port-title">Personalization at Scale — Livestream Discovery</div>
+      <p class="port-desc">Scaled Twitch's recommendation system across key user surfaces — enabling personalized discovery for new users and improving visibility for long-tail creators.</p>
+      <div class="port-metrics">
+        <div class="metric"><div class="metric-val">30%+</div><div class="metric-label">Watch-hour growth</div></div>
+        <div class="metric"><div class="metric-val">33M</div><div class="metric-label">Daily visitors</div></div>
+        <div class="metric"><div class="metric-val">Multi-Surface</div><div class="metric-label">Deployed across key discovery surfaces</div></div>
+      </div>
+    </div>
+    <div class="port-card secondary">
+      <div class="port-card-accent"></div>
+      <div class="port-tags">
+        <span class="tag platform">Publishing Platform</span><span class="tag">Content Discovery</span>
+        <span class="tag platform">Global Deploy at Scale</span>
+      </div>
+      <p class="port-problem">Yahoo News & Weather operated across 26 regions with deeply fragmented editorial systems — limiting scalability, consistency, and product velocity.</p>
+      <div class="port-title">Global Media Platform — From Fragmented Systems to Unified Scale</div>
+      <p class="port-desc">Led the unification of regional systems into a centralized global platform — enabling scalable publishing, personalized discovery, and faster product iteration across 26 markets.</p>
+      <div class="port-metrics">
+        <div class="metric"><div class="metric-val">26</div><div class="metric-label">Regions</div></div>
+        <div class="metric"><div class="metric-val">200+</div><div class="metric-label">Partners</div></div>
+        <div class="metric"><div class="metric-val">10+</div><div class="metric-label">Products shipped</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="philosophy-outer">
+<div class="philosophy" id="philosophy">
+  <div class="phil-label">Product Philosophy · My Framework</div>
+  <div class="phil-introducing">The Way I Work.</div>
+  <div class="phil-quote">I designed a Product OS — where AI accelerates execution and sharpens thinking, and human judgment drives every decision.</div>
+  <p class="phil-sub">Execution scales. Judgment differentiates.</p>
+  <div class="phil-bridge">Four stages. Three questions. One operating rhythm.</div>
+  <div class="phil-stages">
+    <span class="phil-stage-pill s1">Explore</span>
+    <span class="phil-arrow">⟶</span>
+    <span class="phil-stage-pill s2">Validate</span>
+    <span class="phil-arrow">⟶</span>
+    <span class="phil-stage-pill s3">Build</span>
+    <span class="phil-arrow">⟶</span>
+    <span class="phil-stage-pill s4">Learn & Iterate</span>
+  </div>
+  <a href="framework.html" class="phil-cta">See My Product OS <span class="phil-cta-arrow">→</span></a>
+</div>
+</div>
+
+<section id="career">
+  <div class="section-label">Career</div>
+  <div class="section-title">The Path Here.</div>
+  <p class="section-sub">10+ years across digital health, live entertainment, and media — each chapter building on the last.</p>
+  <div class="career-timeline">
+    <div class="career-item">
+      <div class="career-year">2023 – Now</div>
+      <div class="career-line"><div class="career-dot"></div></div>
+      <div>
+        <div class="career-company">iHealth Unified Care</div>
+        <div class="career-role">Associate Director, Product Management</div>
+        <div class="career-desc">Leading AI product strategy for a chronic care platform — shipping 10+ AI tools including browser agents, ambient documentation, and workflow automation across 400+ providers and 100+ clinics.</div>
+      </div>
+    </div>
+    <div class="career-item">
+      <div class="career-year">2020 – 2023</div>
+      <div class="career-line"><div class="career-dot"></div></div>
+      <div>
+        <div class="career-company">Stealth Startup — Ecommerce</div>
+        <div class="career-role">Director of Product Management</div>
+        <div class="career-desc">B2B2C marketplace platform — vendor onboarding, order management, payments, and dropship logistics networks at scale.</div>
+      </div>
+    </div>
+    <div class="career-item">
+      <div class="career-year">2018 – 2020</div>
+      <div class="career-line"><div class="career-dot"></div></div>
+      <div>
+        <div class="career-company">Twitch (Amazon)</div>
+        <div class="career-role">Senior Product Manager, Recommendation</div>
+        <div class="career-desc">ML-driven live content discovery and personalization. Contributed to 30% of total watch-hour growth. Solved cold-start. Improved long-tail creator exposure.</div>
+      </div>
+    </div>
+    <div class="career-item">
+      <div class="career-year">2016 – 2018</div>
+      <div class="career-line"><div class="career-dot"></div></div>
+      <div>
+        <div class="career-company">LeEco / Hoodline</div>
+        <div class="career-role">Lead Product Manager</div>
+        <div class="career-desc">Ecommerce storefront and ML-driven hyperlocal news platform — $20M revenue in year one; automated local news generation at scale.</div>
+      </div>
+    </div>
+    <div class="career-item">
+      <div class="career-year">2013 – 2015</div>
+      <div class="career-line"><div class="career-dot"></div></div>
+      <div>
+        <div class="career-company">Yahoo! Media</div>
+        <div class="career-role">Product Manager → Senior Product Manager</div>
+        <div class="career-desc">Global platform across 26 regions, 200+ publisher partnerships, and 13 media properties. Personalization, CMS, real-time dashboards, and content discovery.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="contact-band" id="contact">
+  <h2>I Lead. I Build. I Ship.</h2>
+  <p>Product leader with a builder mindset — leveraging AI to turn ideas into shipped systems.</p>
+  <div class="contact-links">
+    <a href="mailto:alice.tsai@gmail.com" class="contact-link">alice.tsai@gmail.com</a>
+    <a href="https://www.linkedin.com/in/alice-tsai-622b33b" class="contact-link" target="_blank">LinkedIn</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-name">Alice Tsai — Product Leader</div>
+  <div class="footer-copy">© 2026</div>
+</footer>
+
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">✕</span>
+    <img id="lightboxImg" src="" alt=""/>
+  </div>
+
+  <script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('active'));
+  lightbox.addEventListener('click', e => { if(e.target === lightbox) lightbox.classList.remove('active'); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') lightbox.classList.remove('active'); });
+  function openLightbox(src, alt) { lightboxImg.src = src; lightboxImg.alt = alt; lightbox.classList.add('active'); }
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}
+    });
+  },{threshold:0.06});
+  document.querySelectorAll('.port-card,.pillar,.career-item').forEach(c => {
+    c.style.opacity='0';c.style.transform='translateY(16px)';
+    c.style.transition='opacity .5s ease, transform .5s ease';
+    obs.observe(c);
+  });
+  const photos = {
+    alicePhoto:'img/alice_49.jpg',
+    'img-visit':'img/AI_visit.jpg',
+    'img-screening':'img/screening_hub.jpg',
+    'img-food':'img/meal_insight.jpg'
+  };
+  const zoomIds = ['img-visit','img-screening','img-food'];
+  Object.entries(photos).forEach(([id,url])=>{
+    if(!url)return;
+    const el=document.getElementById(id);
+    if(!el)return;
+    el.src=url;el.style.display='block';
+    if(id==='alicePhoto')document.getElementById('photoPlaceholder').style.display='none';
+    if(zoomIds.includes(id)){
+      el.closest('.screen-wrap').addEventListener('click', () => openLightbox(url, el.alt));
+    }
+  });
+</script>
+</body>
+</html>

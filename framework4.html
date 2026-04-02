@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product OS — Alice Tsai</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#FAFAF7;--ink:#1A1A18;--ink2:#4A4A46;--ink3:#8A8A84;
+  --accent:#1D9E75;--accent2:#0F6E56;--accent-light:#E1F5EE;
+  --border:#E8E8E2;--card:#FFFFFF;
+  --tag-bg:#F0F0EA;--tag-text:#4A4A46;
+  --purple:#533AB7;--purple-light:#EEE8FD;
+  --amber:#8A3D00;--amber-light:#FFF0E6;
+  --coral:#C04828;--coral-light:#FAECE7;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px clamp(20px,4vw,64px);display:flex;justify-content:space-between;align-items:center;background:rgba(250,250,247,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.nav-back{font-size:11px;color:var(--ink3);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;font-weight:500;display:flex;align-items:center;gap:6px;transition:color .2s}
+.nav-back:hover{color:var(--accent)}
+.nav-back::before{content:'←';font-size:13px}
+
+/* HERO */
+.hero{padding:clamp(100px,12vw,140px) clamp(20px,4vw,64px) 72px;max-width:1200px;margin:0 auto}
+.hero-eyebrow{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';display:inline-block;width:20px;height:2px;background:var(--accent)}
+.hero-title-sm{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,7vw,96px);font-weight:400;line-height:.88;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);margin-bottom:0}
+.hero-title-sm span{color:var(--accent)}
+.hero-title-strike{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,7vw,96px);font-weight:400;line-height:.88;letter-spacing:.02em;text-transform:uppercase;color:var(--ink3);text-decoration:line-through;text-decoration-color:var(--accent);text-decoration-thickness:4px;margin-bottom:4px;display:block}
+.hero-divider{width:44px;height:3px;background:var(--accent);margin:18px 0}
+.hero-sub{font-size:18px;color:var(--ink2);max-width:560px;line-height:1.75;margin-bottom:0}
+
+/* PROBLEM STRIP */
+.problem-strip{background:var(--ink);border-radius:16px;padding:clamp(32px,4vw,52px);max-width:1200px;margin:0 clamp(20px,4vw,64px) 72px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;overflow:hidden}
+.problem-item{padding:28px 32px;background:var(--ink);position:relative}
+.problem-item:not(:last-child)::after{content:'';position:absolute;right:0;top:20%;height:60%;width:1px;background:rgba(255,255,255,.1)}
+.problem-num{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.problem-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.3}
+.problem-desc{font-size:12px;color:rgba(255,255,255,.45);line-height:1.65}
+
+/* SECTION */
+.wrap{padding:0 clamp(20px,4vw,64px) 48px;max-width:1200px;margin:0 auto}
+.section-label{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.section-label::before{content:'';display:inline-block;width:20px;height:2px;background:var(--accent)}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4.5vw,56px);font-weight:400;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);margin-bottom:10px;line-height:.95}
+.section-sub{font-size:15px;color:var(--ink3);max-width:500px;margin-bottom:48px;line-height:1.65}
+
+/* THREE ANCHORS */
+.anchors{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.anchor-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px 28px;position:relative;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.anchor-card:hover{border-color:var(--accent);box-shadow:0 8px 24px rgba(29,158,117,.08)}
+.anchor-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.anchor-card.a1::before{background:var(--accent)}
+.anchor-card.a2::before{background:var(--purple)}
+.anchor-card.a3::before{background:#EF9F27}
+.anchor-num{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+.anchor-card.a1 .anchor-num{color:var(--accent)}
+.anchor-card.a2 .anchor-num{color:var(--purple)}
+.anchor-card.a3 .anchor-num{color:#BA7517}
+.anchor-question{font-size:18px;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:10px;letter-spacing:-.02em}
+.anchor-desc{font-size:12px;color:var(--ink3);line-height:1.65}
+.anchor-badge{display:inline-block;margin-top:16px;font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:100px}
+.anchor-card.a1 .anchor-badge{background:var(--accent-light);color:var(--accent2)}
+.anchor-card.a2 .anchor-badge{background:var(--purple-light);color:var(--purple)}
+.anchor-card.a3 .anchor-badge{background:#FAEEDA;color:#854F0B}
+
+.anchor-rule{background:var(--accent-light);border:1px solid #C5EDDE;border-radius:10px;padding:20px 28px;margin-bottom:56px;display:flex;align-items:center;gap:16px}
+.anchor-rule-icon{width:32px;height:32px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.anchor-rule-icon svg{width:16px;height:16px;stroke:#fff;stroke-width:2;fill:none}
+.anchor-rule p{font-size:13px;color:var(--ink2);line-height:1.6}
+.anchor-rule strong{color:var(--ink);font-weight:700}
+
+/* STAGE CARDS */
+.stages{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.stage-card{border-radius:14px;border:1px solid var(--border);background:var(--card);overflow:hidden;transition:box-shadow .2s}
+.stage-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.07)}
+.stage-card.s1{border-top:3px solid var(--accent)}
+.stage-card.s2{border-top:3px solid var(--purple)}
+.stage-card.s3{border-top:3px solid #EF9F27}
+.stage-card.s4{border-top:3px solid var(--coral)}
+.stage-header{display:grid;grid-template-columns:220px 1fr;gap:0;align-items:stretch}
+.stage-identity{padding:28px 32px;border-right:1px solid var(--border)}
+.stage-num{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.stage-card.s1 .stage-num{color:var(--accent)}
+.stage-card.s2 .stage-num{color:var(--purple)}
+.stage-card.s3 .stage-num{color:#BA7517}
+.stage-card.s4 .stage-num{color:var(--coral)}
+.stage-name{font-family:'Bebas Neue',sans-serif;font-size:36px;font-weight:400;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);line-height:1}
+.stage-card.s1 .stage-name{color:var(--accent)}
+.stage-card.s2 .stage-name{color:var(--purple)}
+.stage-card.s3 .stage-name{color:#BA7517}
+.stage-card.s4 .stage-name{color:var(--coral)}
+.stage-main{padding:28px 36px;display:flex;flex-direction:column;justify-content:center}
+.stage-q{font-size:18px;font-weight:700;color:var(--ink);line-height:1.35;letter-spacing:-.02em;margin-bottom:8px}
+.stage-ask{font-size:13px;color:var(--ink3);line-height:1.6;font-style:italic}
+.stage-details{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border)}
+.stage-detail-cell{padding:20px 24px;position:relative}
+.stage-detail-cell:not(:last-child){border-right:1px solid var(--border)}
+.detail-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.stage-card.s1 .detail-label{color:var(--accent)}
+.stage-card.s2 .detail-label{color:var(--purple)}
+.stage-card.s3 .detail-label{color:#BA7517}
+.stage-card.s4 .detail-label{color:var(--coral)}
+.detail-content{font-size:12px;color:var(--ink2);line-height:1.6}
+.detail-content strong{color:var(--ink);font-weight:600}
+.detail-gate{font-size:12px;color:var(--ink2);line-height:1.6;font-weight:500}
+
+/* LOOP INDICATOR */
+.loop-bar{display:flex;align-items:center;gap:8px;padding:14px 20px;background:var(--cream);border:1px solid var(--border);border-radius:8px;margin-bottom:56px}
+.loop-bar span{font-size:11px;color:var(--ink3);flex:1}
+.loop-arrow{font-size:12px;color:var(--accent);font-weight:700}
+
+/* PARTICIPATION */
+.participation{margin-bottom:56px}
+.part-header{display:grid;grid-template-columns:160px repeat(4,1fr);gap:8px;margin-bottom:8px}
+.part-header-cell{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:8px 12px}
+.part-header-cell.s1h{color:var(--accent)}
+.part-header-cell.s2h{color:var(--purple)}
+.part-header-cell.s3h{color:#BA7517}
+.part-header-cell.s4h{color:var(--coral)}
+.part-row{display:grid;grid-template-columns:160px repeat(4,1fr);gap:8px;margin-bottom:8px;align-items:start}
+.part-role{display:flex;align-items:center;gap:10px;padding:12px 0}
+.role-icon-circle{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.role-icon-circle.pm{background:var(--accent-light)}
+.role-icon-circle.design{background:var(--purple-light)}
+.role-icon-circle.eng{background:#FAEEDA}
+.part-role-name{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.part-role-desc{font-size:10px;color:var(--ink3);line-height:1.4}
+.part-cell{padding:12px;border-radius:8px;border:1px solid var(--border);min-height:72px}
+.part-cell.lead{border-width:1.5px}
+.part-cell.s1.lead{background:var(--accent-light);border-color:#9FE1CB}
+.part-cell.s2.lead{background:var(--purple-light);border-color:#AFA9EC}
+.part-cell.s3.lead{background:#FAEEDA;border-color:#FAC775}
+.part-cell.s4.lead{background:var(--coral-light);border-color:#F5C4B3}
+.part-cell.active{background:var(--card)}
+.part-cell.consult{background:var(--cream);border-style:dashed}
+.part-level{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.part-cell.s1.lead .part-level{color:var(--accent2)}
+.part-cell.s2.lead .part-level{color:var(--purple)}
+.part-cell.s3.lead .part-level{color:#854F0B}
+.part-cell.s4.lead .part-level{color:var(--coral)}
+.part-cell.active .part-level{color:var(--ink2)}
+.part-cell.consult .part-level{color:var(--ink3)}
+.part-detail{font-size:11px;color:var(--ink3);line-height:1.45}
+.part-cell.lead .part-detail{color:var(--ink2)}
+.part-legend{display:flex;gap:20px;margin-bottom:32px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--ink3)}
+.legend-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
+.legend-dot.lead{background:var(--accent-light);border:1.5px solid #9FE1CB}
+.legend-dot.active{background:var(--card);border:1px solid var(--border)}
+.legend-dot.consult{background:var(--cream);border:1px dashed var(--border)}
+
+/* AI ADD-ON */
+.addon-block{border:2px dashed #378ADD;border-radius:16px;padding:clamp(32px,4vw,48px);margin-bottom:0;position:relative}
+.addon-badge{position:absolute;top:-13px;left:32px;background:#E6F1FB;color:#185FA5;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 14px;border-radius:100px;border:1px solid #C3DCEF}
+.addon-block-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:400;letter-spacing:.03em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;line-height:.95;margin-top:8px}
+.addon-note{font-size:12px;color:var(--ink3);margin-bottom:24px;line-height:1.6;max-width:560px}
+.addon-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+.addon-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:22px 20px;border-top:2px solid #378ADD}
+.addon-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.addon-desc{font-size:11px;color:var(--ink3);line-height:1.55;margin-bottom:12px}
+.addon-tag{font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;background:#E6F1FB;color:#185FA5;border-radius:100px;display:inline-block}
+.scale-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.scale-card{background:var(--cream);border:1px solid var(--border);border-radius:8px;padding:16px 18px;display:flex;gap:12px;align-items:start}
+.scale-badge{font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;border-radius:100px;white-space:nowrap;flex-shrink:0;margin-top:2px}
+.scale-badge.startup{background:var(--accent-light);color:var(--accent2)}
+.scale-badge.growth{background:var(--purple-light);color:var(--purple)}
+.scale-badge.enterprise{background:#FAEEDA;color:#854F0B}
+.scale-text{font-size:11px;color:var(--ink3);line-height:1.55}
+
+.back-link{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);text-decoration:none;transition:color .2s;margin-top:48px;margin-bottom:72px}
+.back-link:hover{color:var(--accent)}
+.back-link::before{content:'←';font-size:13px}
+
+@media(max-width:800px){
+  .anchors{grid-template-columns:1fr}
+  .problem-strip{grid-template-columns:1fr}
+  .problem-item:not(:last-child)::after{display:none}
+  .stage-header{grid-template-columns:1fr}
+  .stage-identity{border-right:none;border-bottom:1px solid var(--border)}
+  .stage-details{grid-template-columns:1fr}
+  .stage-detail-cell:not(:last-child){border-right:none;border-bottom:1px solid var(--border)}
+  .pm-pillars,.addon-grid{grid-template-columns:1fr}
+  .part-header,.part-row{grid-template-columns:120px repeat(4,1fr)}
+}
+@media(max-width:600px){
+  .part-header,.part-row{grid-template-columns:1fr}
+  .part-header-cell:first-child,.part-role{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Alice Tsai</a>
+  <a href="index.html" class="nav-back">Back to Portfolio</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">How I Design Product Systems</div>
+  <div style="margin-bottom:0">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:400;letter-spacing:.02em;text-transform:uppercase;color:var(--ink2);line-height:1.1">I don't just use AI in product development.</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,7vw,96px);font-weight:400;line-height:.88;letter-spacing:.02em;text-transform:uppercase;color:var(--accent)">I design how product<br>development works.</div>
+  </div>
+  <div class="hero-divider"></div>
+  <p class="hero-sub">I build Product Operating Systems that structure context, encode judgment, and allow teams and AI to make better decisions — repeatable, scalable, and continuous.</p>
+</div>
+
+<div class="wrap">
+  <div class="section-label">Part 1</div>
+  <div class="section-title">Before You Build,<br>Answer These.</div>
+  <p class="section-sub">Speed is no longer the constraint — context is.<br><br>In an AI-native environment, teams can build almost anything. The real challenge is defining the right problem, at the right time, with clear success criteria — before a single sprint begins.<br><br>These three anchors ensure every decision starts with shared context — not assumptions.</p>
+
+  <div class="anchors">
+    <div class="anchor-card a1">
+      <div class="anchor-num">Anchor 01</div>
+      <div class="anchor-question">What problem are we actually solving?</div>
+    </div>
+    <div class="anchor-card a2">
+      <div class="anchor-num">Anchor 02</div>
+      <div class="anchor-question">Why this problem — for this company, right now?</div>
+    </div>
+    <div class="anchor-card a3">
+      <div class="anchor-num">Anchor 03</div>
+      <div class="anchor-question">What does success look like — and for whom?</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="section-label">Part 2</div>
+  <div class="section-title">The Four-Stage<br>Operating System</div>
+  <p class="section-sub">Each stage produces structured context — not static documents — with a clear question, an AI role, and a decision gate. You don't move forward until the context is complete.</p>
+
+  <div class="stages">
+    <div class="stage-card s1">
+      <div class="stage-header">
+        <div class="stage-identity">
+          <div class="stage-num">Stage 01</div>
+          <div class="stage-name">Explore</div>
+        </div>
+        <div class="stage-main">
+          <div class="stage-q">Is this worth solving?</div>
+          <div class="stage-ask">"Do we have enough signal — across users, business, and market — to justify solving this now?"</div>
+        </div>
+      </div>
+      <div class="stage-details">
+        <div class="stage-detail-cell"><div class="detail-label">Context</div><div class="detail-content"><strong>Signal Brief</strong> — problem definition and signal synthesis</div></div>
+        <div class="stage-detail-cell"><div class="detail-label">AI Role</div>          <div class="detail-content">Synthesize signals across users, market, and data. Surface patterns, contradictions, and gaps in understanding.</div></div>
+        <div class="stage-detail-cell"><div class="detail-label">Gate to Pass</div><div class="detail-gate">All three anchors answered with evidence. Go/no-go decided.</div></div>
+      </div>
+    </div>
+    <div class="stage-card s2">
+      <div class="stage-header">
+        <div class="stage-identity">
+          <div class="stage-num">Stage 02</div>
+          <div class="stage-name">Validate</div>
+        </div>
+        <div class="stage-main">
+          <div class="stage-q">Does our solution actually work?</div>
+          <div class="stage-ask">"What are the highest-risk assumptions — and what is the fastest way to validate or invalidate them?"</div>
+        </div>
+      </div>
+      <div class="stage-details">
+        <div class="stage-detail-cell"><div class="detail-label">Context</div><div class="detail-content"><strong>Prototype Brief</strong> + success bar</div></div>
+        <div class="stage-detail-cell"><div class="detail-label">AI Role</div>          <div class="detail-content">Generate experiment options, define success criteria, and explore solution variations.</div></div>
+        <div class="stage-detail-cell"><div class="detail-label">Gate to Pass</div>          <div class="detail-gate">Success criteria are defined before building — not after results are observed.</div></div>
+      </div>
+    </div>
+    <div class="stage-card s3">
+      <div class="stage-header">
+        <div class="stage-identity">
+          <div class="stage-num">Stage 03</div>
+          <div class="stage-name">Build</div>
+        </div>
+        <div class="stage-main">
+          <div class="stage-q">How do we ship it right?</div>
+          <div class="stage-ask">"What are we saying no to — and does the whole team understand the tradeoffs?"</div>
+        </div>
+      </div>
+      <div class="stage-details">
+        <div class="stage-detail-cell"><div class="detail-label">Context</div><div class="detail-content"><strong>Release Narrative</strong> — living doc</div></div>
+        <div class="stage-detail-cell"><div class="detail-label">AI Role</div><div class="detail-content">Generate spec draft, surface edge cases, identify tradeoffs, flag risks.</div></div>
+        <div class="stage-detail-cell"><div class="detail-label">Gate to Pass</div><div class="detail-gate">Tradeoffs explicit and understood by every builder on the team.</div></div>
+      </div>
+    </div>
+    <div class="stage-card s4">
+      <div class="stage-header">
+        <div class="stage-identity">
+          <div class="stage-num">Stage 04</div>
+          <div class="stage-name">Iterate</div>
+        </div>
+        <div class="stage-main">
+          <div class="stage-q">What you ship is never the end: Learn → Iterate</div>
+          <div class="stage-ask">Every signal from production feeds the next decision — what to double down on, what to kill, what to explore next.</div>
+        </div>
+      </div>
+      <div class="stage-details">
+        <div class="stage-detail-cell"><div class="detail-label">Context</div><div class="detail-content"><strong>Signal Log</strong> — living doc</div></div>
+        <div class="stage-detail-cell"><div class="detail-label">AI Role</div><div class="detail-content">Read production signals, surface behavioral patterns, flag anchor drift.</div></div>
+        <div class="stage-detail-cell"><div class="detail-label">Gate to Pass</div><div class="detail-gate">Learnings fed back into next Explore cycle. Nothing ships into a void.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="section-label">Part 3</div>
+  <div class="section-title">Everyone Builds.<br>Not Everyone Decides.</div>
+  <p class="section-sub">In AI-native teams, execution is shared — across engineers, designers, and AI. Judgment is not.<br><br>This system defines where decisions are made, what context they rely on, and who is accountable at each stage — so speed increases without losing clarity.</p>
+
+  <div class="part-legend">
+    <div class="legend-item"><div class="legend-dot lead"></div>Lead — sets direction, makes the call</div>
+    <div class="legend-item"><div class="legend-dot active"></div>Active — builds, contributes, shapes output</div>
+    <div class="legend-item"><div class="legend-dot consult"></div>Consult — brings expertise when needed</div>
+  </div>
+
+  <div class="participation">
+    <div class="part-header">
+      <div class="part-header-cell">Role</div>
+      <div class="part-header-cell s1h">1. Explore</div>
+      <div class="part-header-cell s2h">2. Validate</div>
+      <div class="part-header-cell s3h">3. Build</div>
+      <div class="part-header-cell s4h">4. Learn & Iterate</div>
+    </div>
+    <div class="part-row">
+      <div class="part-role">
+        <div class="role-icon-circle pm">🧭</div>
+        <div class="part-role-text">
+          <div class="part-role-name">PM</div>
+          <div class="part-role-desc">Judgment · Prioritization · Constraints</div>
+        </div>
+      </div>
+      <div class="part-cell s1 lead"><div class="part-level">Lead</div><div class="part-detail">Defines the problem, sizes the bet, makes go/no-go</div></div>
+      <div class="part-cell active"><div class="part-level">Active</div><div class="part-detail">Sets success bar, approves experiment design</div></div>
+      <div class="part-cell active"><div class="part-level">Active</div><div class="part-detail">Makes tradeoff calls, defines scope boundaries</div></div>
+      <div class="part-cell s4 lead"><div class="part-level">Lead</div><div class="part-detail">Interprets signals, decides what to explore next</div></div>
+    </div>
+    <div class="part-row">
+      <div class="part-role">
+        <div class="role-icon-circle design">✏️</div>
+        <div class="part-role-text">
+          <div class="part-role-name">Designer</div>
+          <div class="part-role-desc">UX · Interaction · Visual judgment</div>
+        </div>
+      </div>
+      <div class="part-cell consult"><div class="part-level">Consult</div><div class="part-detail">User insight, pain point framing, behavioral patterns</div></div>
+      <div class="part-cell s2 lead"><div class="part-level">Lead</div><div class="part-detail">Builds prototype, runs usability experiment</div></div>
+      <div class="part-cell active"><div class="part-level">Active</div><div class="part-detail">UX execution, interaction design, visual system</div></div>
+      <div class="part-cell consult"><div class="part-level">Consult</div><div class="part-detail">UX signal interpretation, friction patterns</div></div>
+    </div>
+    <div class="part-row">
+      <div class="part-role">
+        <div class="role-icon-circle eng">⚙️</div>
+        <div class="part-role-text">
+          <div class="part-role-name">Engineer</div>
+          <div class="part-role-desc">Craft · System thinking · Velocity</div>
+        </div>
+      </div>
+      <div class="part-cell consult"><div class="part-level">Consult</div><div class="part-detail">Feasibility signal, technical constraint awareness</div></div>
+      <div class="part-cell active"><div class="part-level">Active</div><div class="part-detail">Technical prototype, spike if needed</div></div>
+      <div class="part-cell s3 lead"><div class="part-level">Lead</div><div class="part-detail">Builds, ships, owns quality and reliability</div></div>
+      <div class="part-cell active"><div class="part-level">Active</div><div class="part-detail">System performance, technical signal monitoring</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="addon-block">
+    <div class="addon-badge">✦ For AI Products Only</div>
+    <div class="addon-block-title">AI Product<br>Add-On Layer</div>
+    <div class="addon-note">Building with AI isn't just a technical decision — it's a quality commitment. This layer defines the standards for accuracy, reliability, and output quality — before anything ships.</div>
+    <div class="addon-grid">
+      <div class="addon-card">
+        <div class="addon-title">Evaluation plan</div>
+        <div class="addon-desc">What does "good" look like for this AI feature? Define accuracy benchmarks, success metrics, and what failure modes you're willing to accept before you build.</div>
+        <div class="addon-tag">→ Stage 2 gate</div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-title">Guardrails design</div>
+        <div class="addon-desc">When the AI is wrong — and it will be — what happens? Who decides? What's the fallback? Non-deterministic systems need explicit failure design, not just happy-path specs.</div>
+        <div class="addon-tag">→ Stage 3 gate</div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-title">Model decision log</div>
+        <div class="addon-desc">Why this model, not that one? What capability did you trade for cost or latency? Document the reasoning so future teams understand the constraints you were working within.</div>
+        <div class="addon-tag">→ Stage 2 + 3</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:8px;padding:16px 18px;display:flex;gap:12px;align-items:start">
+        <span style="font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:var(--accent-light);color:var(--accent2);white-space:nowrap;flex-shrink:0;margin-top:2px">Startup</span>
+        <span style="font-size:11px;color:var(--ink3);line-height:1.55">Evaluation plan only. Define what "good" looks like before you ship.</span>
+      </div>
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:8px;padding:16px 18px;display:flex;gap:12px;align-items:start">
+        <span style="font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:var(--purple-light);color:var(--purple);white-space:nowrap;flex-shrink:0;margin-top:2px">Growth</span>
+        <span style="font-size:11px;color:var(--ink3);line-height:1.55">Evaluation plan + Guardrails. Reliability matters more as user base grows.</span>
+      </div>
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:8px;padding:16px 18px;display:flex;gap:12px;align-items:start">
+        <span style="font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;border-radius:100px;background:#FAEEDA;color:#854F0B;white-space:nowrap;flex-shrink:0;margin-top:2px">Enterprise</span>
+        <span style="font-size:11px;color:var(--ink3);line-height:1.55">Full add-on activated. Model decisions need documentation for audit and handoff.</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--ink);border-radius:16px;padding:clamp(32px,4vw,48px);margin-top:48px">
+    <div style="font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:8px"><span style="display:inline-block;width:16px;height:2px;background:var(--accent)"></span>PM's irreplaceable value</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:400;letter-spacing:.03em;text-transform:uppercase;color:#fff;margin-bottom:24px;line-height:.95">What AI Can't Replace<br>Across Any Stage</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08);border-radius:8px;overflow:hidden">
+      <div style="background:var(--ink);padding:24px 22px">
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:8px">Business constraint navigation</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.65">Understanding what the company can actually win — given team capacity, competitive position, and strategic timing. No model knows your organization's real constraints.</div>
+      </div>
+      <div style="background:var(--ink);padding:24px 22px">
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:8px">Problem sizing and prioritization</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.65">Answering "is this worth the bet?" relative to everything else the team could be doing. Requires judgment about opportunity cost that AI can model but not make.</div>
+      </div>
+      <div style="background:var(--ink);padding:24px 22px">
+        <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:8px">Cross-functional judgment</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.65">The tradeoff decisions that span user value, technical feasibility, business viability, and team morale simultaneously. These calls belong to a human holding all four contexts at once.</div>
+      </div>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-link">Back to Portfolio</a>
+</div>
+
+</body>
+</html>
