@@ -143,7 +143,9 @@ footer{padding:24px clamp(20px,4vw,64px);border-top:1px solid var(--border);disp
   .portfolio-secondary{grid-template-columns:1fr}
   .philosophy{margin:0 clamp(20px,4vw,64px) 56px}
   .phil-quote::before{display:none}
-  .phil-stages{gap:6px}
+  .phil-stages{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+  .phil-stage-pill{font-size:11px;padding:8px 14px;white-space:nowrap}
+  .phil-arrow{font-size:14px;flex-shrink:0}
   footer{flex-direction:column;gap:8px;text-align:center}
 }
 </style>
